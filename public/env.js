@@ -2,7 +2,7 @@ window.env = {
   "ALLUSERSPROFILE": "C:\\ProgramData",
   "ANDROID_HOME": "C:\\Users\\KoteswaraRaoPathakot\\AppData\\Local\\Android\\Sdk",
   "APPDATA": "C:\\Users\\KoteswaraRaoPathakot\\AppData\\Roaming",
-  "BASE_URL": "http://localhost:8000",
+  "BASE_URL": "https://backend-repo-8hic.onrender.com",
   "ChocolateyInstall": "C:\\ProgramData\\chocolatey\\",
   "ChocolateyLastPathUpdate": "133560042123488089",
   "ChocolateyToolsLocation": "C:\\Tools\\",
