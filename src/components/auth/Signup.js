@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import env from "react-dotenv";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -22,7 +23,7 @@ const Signup = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:8000/api/auth/signup",
+        `${env.BASE_URL}/api/auth/signup`,
         formData
       );
       if(response.data){
@@ -37,7 +38,6 @@ const Signup = () => {
       console.error(error);
     }
   };
-
   return (
     <div className="signup-container">
       <form onSubmit={handleSubmit} className="signup-form">

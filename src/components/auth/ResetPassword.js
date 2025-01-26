@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import "./ResetPassword.css";  // Import the CSS file
+import env from "react-dotenv";
 
 const ResetPassword = () => {
   const { token } = useParams(); // Extract token from the URL
@@ -16,7 +17,7 @@ const ResetPassword = () => {
     setError("");
 
     try {
-      const response = await axios.post(`http://localhost:8000/api/auth/reset-password/${token}`, { password });
+      const response = await axios.post(`${env.BASE_URL}/api/auth/reset-password/${token}`, { password });
       setMessage(response.data.message);
     } catch (err) {
       setError(err.response?.data?.error || "Something went wrong");

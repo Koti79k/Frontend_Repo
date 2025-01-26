@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Header } from "./Header";
+import env from "react-dotenv";
 
 const Feed = () => {
   const [isCreateDialogOpen, setIsCreateDialogOpen] = useState(false);
@@ -13,7 +14,7 @@ const Feed = () => {
     };
     try {
       const response = await axios.get(
-        "http://localhost:8000/api/feed",
+        `${env.BASE_URL}/api/feed`,
         config
       );
       setFeeds(response.data);
@@ -43,7 +44,7 @@ const Feed = () => {
       formData.append("photo", photo);
 
       const response = await axios.post(
-        "http://localhost:8000/api/feed/create",
+        `${env.BASE_URL}/api/feed/create`,
         formData,
         config
       );

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./ForgotPassword.css";  // Import the CSS file
+import env from "react-dotenv";
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
@@ -13,7 +14,7 @@ const ForgotPassword = () => {
     setError("");
 
     try {
-      const response = await axios.post("http://localhost:8000/api/auth/forgot-password", { email });
+      const response = await axios.post(`${env.BASE_URL}/api/auth/forgot-password`, { email });
       setMessage(response.data.message);
     } catch (err) {
       setError(err.response?.data?.error || "Something went wrong");

@@ -1,12 +1,13 @@
 import axios from "axios";
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import env from "react-dotenv";
 
 const Logout = () => {
   const navigate = useNavigate();
   const handleLogout = async () => {
     try {
-      await axios.post("http://localhost:8000/api/auth/logout");
+      await axios.post(`${env.BASE_URL}/api/auth/logout`);
       alert("Logged out successfully!");
       localStorage.removeItem("authToken");
       navigate("/signup");

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Trash2 } from "lucide-react";
-import Logout from "../auth/Logout";
 import { Header } from "./Header";
+import env from "react-dotenv";
 
 const TaskManagement = () => {
   const [tasks, setTasks] = useState({
@@ -22,7 +22,7 @@ const TaskManagement = () => {
       };
       setLoading(true);
       const response = await axios.get(
-        "http://localhost:8000/api/tasks",
+        `${env.BASE_URL}/api/tasks`,
         config
       );
       const groupedTasks = response.data.reduce(
@@ -54,7 +54,7 @@ const TaskManagement = () => {
         headers: { Authorization: `Bearer ${token}` },
       };
       const response = await axios.post(
-        "http://localhost:8000/api/task",
+        `${env.BASE_URL}/api/task`,
         {
           name: newTask.name,
           description: newTask.description,
@@ -99,7 +99,7 @@ const TaskManagement = () => {
         headers: { Authorization: `Bearer ${token}` },
       };
       await axios.put(
-        "http://localhost:8000/api/task/status",
+        `${env.BASE_URL}/api/task/status`,
         {
           taskId: task._id,
           status: targetColumn,
@@ -139,7 +139,7 @@ const TaskManagement = () => {
           headers: { Authorization: `Bearer ${token}` },
         };
         setLoading(true);
-        await axios.delete(`http://localhost:8000/api/task/${taskId}`, config);
+        await axios.delete(`${env.BASE_URL}/api/task/${taskId}`, config);
         setTasks((prev) => ({
           ...prev,
           [column]: prev[column].filter((task) => task._id !== taskId),

@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import env from "react-dotenv";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -31,7 +32,7 @@ const Login = () => {
     setError(false);
     try {
       const response = await axios.post(
-        "http://localhost:8000/api/auth/login", // Use `https` in production
+        `${env.BASE_URL}/api/auth/login`, // Use `https` in production
         formData
       );
 
